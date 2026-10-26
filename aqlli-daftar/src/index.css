@@ -1,0 +1,475 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    @apply bg-cream text-ink font-sans antialiased;
+    margin: 0;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Qayta ishlatiladigan tugma stillari */
+  .btn-primary {
+    @apply flex items-center justify-center gap-2 
+           bg-ink text-cream font-bold text-sm
+           px-4 py-2.5 rounded-xl
+           hover:opacity-90 active:scale-95
+           transition-all duration-150;
+  }
+
+  .btn-secondary {
+    @apply flex items-center justify-center gap-2 
+           bg-card text-ink font-semibold text-sm
+           px-4 py-2.5 rounded-xl border border-line
+           hover:bg-line/30 active:scale-95
+           transition-all duration-150;
+  }
+
+  .btn-ghost {
+    @apply flex items-center justify-center gap-2 
+           text-ink-soft font-semibold text-sm
+           px-3 py-2 rounded-lg
+           hover:bg-line/40
+           transition-all duration-150;
+  }
+
+  .input-field {
+    @apply w-full bg-card border border-line rounded-xl
+           px-3.5 py-2.5 text-sm text-ink
+           placeholder:text-ink-soft
+           focus:border-gold focus:outline-none
+           transition-colors duration-150;
+  }
+
+  .card {
+    @apply bg-card border border-line rounded-2xl p-4;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5
+           bg-card border border-line
+           text-ink-soft font-semibold text-xs
+           px-3 py-1.5 rounded-full
+           hover:bg-line/30 cursor-pointer
+           transition-colors duration-150;
+  }
+
+  .chip-active {
+    @apply bg-ink text-cream border-ink;
+  }
+}
+
+/* Light mode (standart) ranglar */
+:root {
+  --bg-primary: #FAF3E3;
+  --bg-secondary: #FFFCF6;
+  --bg-card: #FFFCF6;
+  --text-primary: #4A4032;
+  --text-secondary: #93876F;
+  --border: #EADFC4;
+  --accent: #8FA37E;
+}
+
+/* Dark mode ranglar - KO'Z UCHUN QULAY */
+[data-theme="dark"] {
+  --bg-primary: #0f1419;
+  --bg-secondary: #1a1f26;
+  --bg-card: #1e252d;
+  --text-primary: #e6e8eb;
+  --text-secondary: #8b949e;
+  --border: #2d333b;
+  --accent: #7dd3a0;
+}
+
+/* Asosiy ranglarni qo'llash */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Sidebar dark mode */
+[data-theme="dark"] aside {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--border) !important;
+}
+
+/* Header dark mode */
+[data-theme="dark"] header {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--border) !important;
+}
+
+/* Card dark mode */
+[data-theme="dark"] .card {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border) !important;
+}
+
+/* Border line dark mode */
+[data-theme="dark"] .border-line {
+  border-color: var(--border) !important;
+}
+
+/* Text colors dark mode */
+[data-theme="dark"] .text-ink-soft {
+  color: var(--text-secondary) !important;
+}
+
+[data-theme="dark"] .text-ink {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .bg-cream {
+  background-color: var(--bg-primary) !important;
+}
+
+[data-theme="dark"] .bg-card {
+  background-color: var(--bg-card) !important;
+}
+
+[data-theme="dark"] .bg-line\/40 {
+  background-color: rgba(45, 51, 59, 0.4) !important;
+}
+
+[data-theme="dark"] .bg-line\/30 {
+  background-color: rgba(45, 51, 59, 0.3) !important;
+}
+
+/* Button colors dark mode */
+[data-theme="dark"] .btn-primary {
+  background-color: var(--accent) !important;
+  color: #0f1419 !important;
+}
+
+[data-theme="dark"] .btn-secondary {
+  background-color: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border) !important;
+}
+
+[data-theme="dark"] .btn-ghost {
+  color: var(--text-secondary) !important;
+}
+
+[data-theme="dark"] .btn-ghost:hover {
+  background-color: rgba(45, 51, 59, 0.4) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Input fields dark mode */
+[data-theme="dark"] .input-field {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border) !important;
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .input-field::placeholder {
+  color: var(--text-secondary) !important;
+}
+
+[data-theme="dark"] select.input-field {
+  background-color: var(--bg-card) !important;
+}
+
+[data-theme="dark"] select.input-field option {
+  background-color: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Active states dark mode */
+[data-theme="dark"] .bg-ink {
+  background-color: var(--accent) !important;
+}
+
+[data-theme="dark"] .text-cream {
+  color: #0f1419 !important;
+}
+
+/* Chip dark mode */
+[data-theme="dark"] .chip {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border) !important;
+  color: var(--text-secondary) !important;
+}
+
+[data-theme="dark"] .chip-active {
+  background-color: var(--accent) !important;
+  color: #0f1419 !important;
+  border-color: var(--accent) !important;
+}
+
+/* Scrollbar dark mode */
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: var(--border);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Modal dark mode */
+[data-theme="dark"] .modal-overlay {
+  background: rgba(0, 0, 0, 0.7) !important;
+}
+
+[data-theme="dark"] .modal-sheet {
+  background-color: var(--bg-secondary) !important;
+}
+
+/* Sidebar navigation dark mode */
+[data-theme="dark"] nav a {
+  color: var(--text-secondary) !important;
+}
+
+[data-theme="dark"] nav a:hover {
+  background-color: rgba(45, 51, 59, 0.4) !important;
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] nav a.bg-ink {
+  background-color: var(--accent) !important;
+  color: #0f1419 !important;
+}
+
+/* Stat pills dark mode */
+[data-theme="dark"] .stat-pill {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border) !important;
+}
+
+/* Category badges dark mode */
+[data-theme="dark"] .bg-sage-bg {
+  background-color: rgba(125, 211, 160, 0.15) !important;
+}
+
+[data-theme="dark"] .text-sage {
+  color: #7dd3a0 !important;
+}
+
+[data-theme="dark"] .bg-gold-bg {
+  background-color: rgba(255, 199, 116, 0.15) !important;
+}
+
+[data-theme="dark"] .text-gold {
+  color: #ffc774 !important;
+}
+
+[data-theme="dark"] .bg-lavender-bg {
+  background-color: rgba(188, 173, 227, 0.15) !important;
+}
+
+[data-theme="dark"] .text-lavender {
+  color: #bcade3 !important;
+}
+
+[data-theme="dark"] .bg-rose-bg {
+  background-color: rgba(255, 138, 128, 0.15) !important;
+}
+
+[data-theme="dark"] .text-rose {
+  color: #ff8a80 !important;
+}
+
+/* Xush kelibsiz kartochkasi dark mode */
+[data-theme="dark"] .bg-gradient-to-br.from-sage-bg.to-cream {
+  background: linear-gradient(to bottom right, rgba(125, 211, 160, 0.15), var(--bg-card)) !important;
+  border-color: var(--border) !important;
+}
+
+
+
+
+/* Scrollbar stillari */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-soft);
+}
+
+/* Fade-in animatsiya */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Tiptap toolbar dark mode */
+.toolbar-bg {
+  background-color: var(--bg-card, #FFFCF6);
+  transition: background-color 0.3s ease;
+}
+
+[data-theme="dark"] .toolbar-bg {
+  background-color: #1e252d !important;
+}
+
+
+
+/* ==========================================
+   SYNTAX HIGHLIGHTING (highlight.js bilan)
+   ========================================== */
+.note-content pre {
+  background: #282c34 !important;
+  color: #abb2bf !important;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace !important;
+  padding: 16px !important;
+  border-radius: 8px !important;
+  overflow-x: auto !important;
+  margin: 1em 0 !important;
+  font-size: 0.9em !important;
+  line-height: 1.5 !important;
+}
+
+.note-content pre code {
+  background: transparent !important;
+  color: inherit !important;
+  padding: 0 !important;
+  font-size: inherit !important;
+}
+
+.note-content code {
+  background: rgba(125, 211, 160, 0.15);
+  color: var(--text-primary, #4A4032);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: 'Consolas', monospace;
+}
+
+/* Dark mode uchun */
+[data-theme="dark"] .note-content code {
+  background: rgba(125, 211, 160, 0.15);
+  color: #e6e8eb;
+}
+
+/* O'qish sahifasi uchun qo'shimcha stillar */
+.note-content h1 { font-size: 2em; font-weight: bold; margin: 0.5em 0; color: var(--text-primary); }
+.note-content h2 { font-size: 1.5em; font-weight: bold; margin: 0.5em 0; color: var(--text-primary); }
+.note-content h3 { font-size: 1.25em; font-weight: bold; margin: 0.5em 0; color: var(--text-primary); }
+.note-content ul { list-style-type: disc; padding-left: 1.5em; margin: 0.5em 0; }
+.note-content ol { list-style-type: decimal; padding-left: 1.5em; margin: 0.5em 0; }
+.note-content blockquote { 
+  border-left: 3px solid var(--border, #EADFC4); 
+  padding-left: 1em; 
+  margin: 0.5em 0; 
+  color: var(--text-secondary, #93876F); 
+}
+.note-content a { color: #3b82f6; text-decoration: underline; }
+.note-content hr { border: none; border-top: 2px solid var(--border, #EADFC4); margin: 1em 0; }
+.note-content p { margin: 0.5em 0; line-height: 1.6; }
+.note-content strong { font-weight: bold; }
+.note-content em { font-style: italic; }
+
+
+/* ==========================================
+   KOD BLOKLARI UCHUN COPY TUGMASI STILLARI
+   ========================================== */
+.code-block-wrapper {
+  position: relative;
+  margin: 1em 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #282c34;
+}
+
+.code-block-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  background: #21252b;
+  border-bottom: 1px solid #181a1f;
+}
+
+.code-lang-label {
+  font-size: 0.75em;
+  font-weight: 600;
+  color: #abb2bf;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.code-copy-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: transparent;
+  border: 1px solid #3e4451;
+  border-radius: 6px;
+  color: #abb2bf;
+  font-size: 0.75em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.code-copy-btn:hover {
+  background: #3e4451;
+  color: #fff;
+  border-color: #569cd6;
+}
+
+.code-copy-btn.copied {
+  background: #2d5a3d;
+  border-color: #7dd3a0;
+  color: #7dd3a0;
+}
+
+.code-block-wrapper pre {
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Dark mode uchun */
+[data-theme="dark"] .code-block-wrapper {
+  background: #1e1e1e;
+}
+
+[data-theme="dark"] .code-block-header {
+  background: #1a1a1a;
+  border-bottom-color: #2d2d2d;
+}
+
+[data-theme="dark"] .code-copy-btn {
+  border-color: #3d3d3d;
+}
+
+[data-theme="dark"] .code-copy-btn:hover {
+  background: #3d3d3d;
+}
